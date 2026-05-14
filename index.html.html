@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rimjim Kamal — Marketing Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #1a1714;
+    --ink-2: #4a4540;
+    --ink-3: #8a8480;
+    --cream: #f7f4ef;
+    --cream-2: #ede9e2;
+    --gold: #c9974a;
+    --gold-light: #e8c98a;
+    --accent: #2d4a3e;
+    --accent-light: #e2ede8;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.2rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(247,244,239,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,151,74,0.15);
+  }
+  .nav-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; letter-spacing: 0.05em; }
+  .nav-links { display: flex; gap: 2.5rem; }
+  .nav-links a { text-decoration: none; color: var(--ink-2); font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    padding: 8rem 4rem 4rem;
+    gap: 4rem;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0; width: 50%; height: 100%;
+    background: linear-gradient(135deg, #e8c98a18 0%, #2d4a3e12 100%);
+    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid var(--gold-light);
+    padding: 0.35rem 0.9rem; border-radius: 2px; margin-bottom: 1.8rem;
+    font-weight: 500;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-weight: 300; line-height: 1.05;
+    margin-bottom: 0.3rem;
+  }
+  h1 span { font-style: italic; color: var(--gold); }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 300; font-style: italic;
+    color: var(--ink-2); margin-bottom: 1.8rem; line-height: 1.5;
+  }
+  .hero-desc {
+    font-size: 0.92rem; line-height: 1.8; color: var(--ink-2);
+    max-width: 480px; margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-block; padding: 0.85rem 2.2rem;
+    background: var(--accent); color: var(--white);
+    text-decoration: none; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 500; border-radius: 2px; transition: all 0.25s;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary:hover { background: var(--ink); border-color: var(--ink); transform: translateY(-2px); }
+  .btn-outline {
+    display: inline-block; padding: 0.85rem 2.2rem;
+    background: transparent; color: var(--ink);
+    text-decoration: none; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 500; border-radius: 2px; border: 1px solid var(--ink-3);
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  .hero-visual {
+    position: relative; z-index: 1; display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .hero-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .stat-card {
+    background: var(--white); border: 1px solid var(--cream-2);
+    padding: 1.5rem; border-radius: 4px;
+    position: relative; overflow: hidden;
+  }
+  .stat-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+    background: var(--gold);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 300; color: var(--accent); line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--ink-3); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .hero-quote {
+    background: var(--accent); color: var(--white);
+    padding: 1.5rem 2rem; border-radius: 4px; font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-style: italic; line-height: 1.6; font-weight: 300;
+  }
+  .hero-quote cite { display: block; margin-top: 0.8rem; font-size: 0.75rem; font-style: normal; opacity: 0.7; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
+
+  /* SECTIONS */
+  section { padding: 5rem 4rem; }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-divider {
+    width: 48px; height: 1px; background: var(--gold); margin-bottom: 2.5rem;
+  }
+
+  /* ABOUT */
+  .about { background: var(--white); }
+  .about-inner { display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: start; }
+  .skills-wrap { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-tag {
+    padding: 0.4rem 0.9rem; background: var(--cream); border: 1px solid var(--cream-2);
+    font-size: 0.78rem; border-radius: 2px; color: var(--ink-2); letter-spacing: 0.04em;
+    transition: all 0.2s;
+  }
+  .skill-tag:hover { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
+  .about-text p { font-size: 0.95rem; line-height: 1.9; color: var(--ink-2); margin-bottom: 1.2rem; }
+
+  /* EXPERIENCE */
+  .experience { background: var(--cream); }
+  .exp-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+  .exp-card {
+    background: var(--white); border: 1px solid var(--cream-2);
+    padding: 2rem 2.5rem; border-radius: 4px;
+    display: grid; grid-template-columns: auto 1fr; gap: 2rem;
+    transition: box-shadow 0.2s;
+  }
+  .exp-card:hover { box-shadow: 0 4px 24px rgba(45,74,62,0.08); }
+  .exp-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem; color: var(--ink-3); writing-mode: vertical-rl;
+    text-orientation: mixed; letter-spacing: 0.08em; text-transform: uppercase;
+    border-right: 1px solid var(--cream-2); padding-right: 1.5rem;
+    white-space: nowrap; min-height: 60px;
+  }
+  .exp-role { font-size: 1rem; font-weight: 500; margin-bottom: 0.25rem; }
+  .exp-company { font-size: 0.85rem; color: var(--gold); font-weight: 400; margin-bottom: 0.8rem; letter-spacing: 0.04em; }
+  .exp-desc { font-size: 0.88rem; line-height: 1.75; color: var(--ink-2); }
+  .exp-desc li { margin-bottom: 0.4rem; margin-left: 1rem; }
+
+  /* WORK/BLOGS */
+  .work { background: var(--white); }
+  .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .work-card {
+    border: 1px solid var(--cream-2); border-radius: 4px; overflow: hidden;
+    background: var(--cream); transition: transform 0.25s, box-shadow 0.25s;
+    text-decoration: none; color: inherit; display: flex; flex-direction: column;
+  }
+  .work-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(45,74,62,0.1); }
+  .work-card-img {
+    height: 120px; background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .work-card-img span {
+    font-family: 'Cormorant Garamond', serif; font-size: 3rem; opacity: 0.2; color: var(--white);
+  }
+  .work-card-tag {
+    position: absolute; top: 0.8rem; left: 0.8rem;
+    background: var(--gold); color: var(--white);
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.2rem 0.6rem; border-radius: 2px; font-weight: 500;
+  }
+  .work-card-body { padding: 1.2rem 1.4rem; flex: 1; display: flex; flex-direction: column; }
+  .work-card-title { font-size: 0.9rem; font-weight: 500; line-height: 1.5; margin-bottom: 0.6rem; }
+  .work-card-meta { font-size: 0.75rem; color: var(--ink-3); margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--cream-2); display: flex; justify-content: space-between; }
+  .work-card-arrow { color: var(--gold); font-size: 0.8rem; }
+
+  /* EDUCATION */
+  .education { background: var(--cream); }
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .edu-card {
+    background: var(--white); padding: 2rem; border-radius: 4px;
+    border: 1px solid var(--cream-2); position: relative; overflow: hidden;
+  }
+  .edu-card::after {
+    content: ''; position: absolute; bottom: -20px; right: -20px;
+    width: 80px; height: 80px; border-radius: 50%;
+    background: var(--accent-light); opacity: 0.6;
+  }
+  .edu-year { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 500; }
+  .edu-degree { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 0.3rem; }
+  .edu-uni { font-size: 0.85rem; color: var(--ink-3); }
+
+  /* CTA */
+  .cta {
+    background: var(--accent); color: var(--white);
+    text-align: center; padding: 6rem 4rem;
+  }
+  .cta .section-label { color: var(--gold-light); }
+  .cta .section-title { color: var(--white); }
+  .cta p { font-size: 0.95rem; opacity: 0.8; max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.8; }
+  .btn-cta {
+    display: inline-block; padding: 1rem 2.8rem;
+    background: var(--gold); color: var(--white);
+    text-decoration: none; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 500; border-radius: 2px; transition: all 0.25s; border: 1px solid var(--gold);
+  }
+  .btn-cta:hover { background: var(--gold-light); border-color: var(--gold-light); color: var(--ink); transform: translateY(-2px); }
+  .cta-email { margin-top: 1.5rem; font-size: 0.82rem; opacity: 0.65; }
+  .cta-email a { color: var(--gold-light); text-decoration: none; }
+  .cta-email a:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink); color: var(--cream-2);
+    padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.78rem; opacity: 0.9;
+  }
+  footer a { color: var(--gold-light); text-decoration: none; margin-left: 1.5rem; }
+  footer a:hover { text-decoration: underline; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left { animation: fadeUp 0.7s ease both; }
+  .hero-visual { animation: fadeUp 0.7s 0.2s ease both; }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+    section { padding: 3.5rem 1.5rem; }
+    .about-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .work-grid { grid-template-columns: 1fr 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .exp-card { grid-template-columns: 1fr; }
+    .exp-date { writing-mode: horizontal-tb; border-right: none; border-bottom: 1px solid var(--cream-2); padding-right: 0; padding-bottom: 0.8rem; margin-bottom: 0.5rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">Rimjim Kamal</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#work">Writing</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Marketing · Brand · Metaverse</div>
+    <h1>Rimjim<br><span>Kamal</span></h1>
+    <p class="hero-subtitle">Digital Marketer & Brand Storyteller</p>
+    <p class="hero-desc">I craft campaigns that make emerging technologies impossible to ignore — from immersive VR safety training to B2B lead generation. Passionate about the intersection of science, strategy, and storytelling.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Discuss Opportunities</a>
+      <a href="#work" class="btn-outline">View My Work</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Internships Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Blog Articles Published</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">B2B</div>
+        <div class="stat-label">Lead Generation</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">VR+</div>
+        <div class="stat-label">Tech-Forward Marketing</div>
+      </div>
+    </div>
+    <div class="hero-quote">
+      "Bridging the gap between complex immersive technology and the humans who need it most."
+      <cite>— Rimjim Kamal</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="section-label">Who I Am</div>
+      <h2 class="section-title">Science mind,<br><em>marketer's heart</em></h2>
+      <div class="section-divider"></div>
+      <p style="font-size:0.85rem; color: var(--ink-3); margin-bottom: 1.2rem;">Core Skills</p>
+      <div class="skills-wrap">
+        <span class="skill-tag">Digital Marketing</span>
+        <span class="skill-tag">B2B Lead Generation</span>
+        <span class="skill-tag">Content Writing</span>
+        <span class="skill-tag">Brand Visibility</span>
+        <span class="skill-tag">Product Marketing</span>
+        <span class="skill-tag">Business Development</span>
+        <span class="skill-tag">Critical Thinking</span>
+        <span class="skill-tag">Leadership</span>
+        <span class="skill-tag">Research Analysis</span>
+        <span class="skill-tag">Social Media</span>
+      </div>
+      <div style="margin-top: 1.5rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
+        <span style="font-size:0.75rem; color: var(--ink-3); background: var(--cream); padding: 0.3rem 0.7rem; border-radius: 2px; border: 1px solid var(--cream-2);">📍 Bengaluru, India</span>
+        <span style="font-size:0.75rem; color: var(--ink-3); background: var(--cream); padding: 0.3rem 0.7rem; border-radius: 2px; border: 1px solid var(--cream-2);">🌐 English, Hindi</span>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <p>With a foundation in Biotechnology and a pivot into digital marketing, I bring a distinctive analytical lens to every campaign I build. My time at <strong>InfiVR</strong> immersed me in the world of immersive technology — where I learned to translate complex VR solutions into compelling narratives for enterprise clients.</p>
+      <p>I believe the best marketing lives at the intersection of empathy and data. Whether I'm crafting long-form content about VR safety training or generating B2B leads through strategic outreach, I focus on understanding the audience first and the algorithm second.</p>
+      <p>Currently open to full-time opportunities in digital marketing, content strategy, and brand communications — especially in tech, edtech, and impact-driven organisations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="section-label">Career Path</div>
+  <h2 class="section-title">Where I've <em>made an impact</em></h2>
+  <div class="section-divider"></div>
+  <div class="exp-grid">
+    <div class="exp-card reveal">
+      <div class="exp-date">Jun – Dec 2025</div>
+      <div>
+        <div class="exp-role">Digital Marketing Intern</div>
+        <div class="exp-company">InfiVR · Immersive Technology</div>
+        <ul class="exp-desc">
+          <li>Executed targeted campaigns that boosted brand visibility and engagement for a VR tech startup.</li>
+          <li>Led B2B lead generation through strategic outreach and in-depth research across enterprise verticals.</li>
+          <li>Produced thought-leadership blog content on VR safety training, published on the company blog.</li>
+          <li>Participated in client reviews and cross-functional brainstorming sessions to align strategy with goals.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-card reveal">
+      <div class="exp-date">Oct – Dec 2024</div>
+      <div>
+        <div class="exp-role">Business Development Intern</div>
+        <div class="exp-company">Fee Caddy · EdTech / FinTech</div>
+        <ul class="exp-desc">
+          <li>Promoted study-abroad loan services through targeted social media campaigns and peer engagement.</li>
+          <li>Generated qualified leads and conversions by building awareness among prospective students.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-card reveal">
+      <div class="exp-date">Aug – Nov 2022</div>
+      <div>
+        <div class="exp-role">HR Intern</div>
+        <div class="exp-company">Ashmaan Foundation · Non-Profit</div>
+        <ul class="exp-desc">
+          <li>Supported recruitment drives and volunteer outreach efforts.</li>
+          <li>Coordinated event organisation and managed volunteer programs end-to-end.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK / BLOGS -->
+<section class="work" id="work">
+  <div class="section-label">Featured Writing</div>
+  <h2 class="section-title">Thought Leadership & <em>Content</em></h2>
+  <div class="section-divider"></div>
+  <div class="work-grid">
+    <a class="work-card reveal" href="https://blog.infivr.com/virtual-reality-hazard-hunt-and-hazard-recognition-for-effective-safety-training/" target="_blank">
+      <div class="work-card-img">
+        <span>🔍</span>
+        <div class="work-card-tag">Safety Training</div>
+      </div>
+      <div class="work-card-body">
+        <div class="work-card-title">Virtual Reality Hazard Hunt & Hazard Recognition for Effective Safety Training</div>
+        <div class="work-card-meta">
+          <span>InfiVR Blog</span>
+          <span class="work-card-arrow">↗</span>
+        </div>
+      </div>
+    </a>
+    <a class="work-card reveal" href="https://blog.infivr.com/infivrs-iogp-line-of-fire-immersive-and-ai-powered-safety-trainings/" target="_blank">
+      <div class="work-card-img" style="background: #3a2d5e;">
+        <span>⚡</span>
+        <div class="work-card-tag">AI + VR</div>
+      </div>
+      <div class="work-card-body">
+        <div class="work-card-title">IOGP Line of Fire: Immersive & AI-Powered Safety Trainings</div>
+        <div class="work-card-meta">
+          <span>InfiVR Blog</span>
+          <span class="work-card-arrow">↗</span>
+        </div>
+      </div>
+    </a>
+    <a class="work-card reveal" href="https://blog.infivr.com/bajaj-auto-reduces-65-incidents-and-safety-violations-using-infivr-ai-3d-fire-safety-trainings/" target="_blank">
+      <div class="work-card-img" style="background: #5e2d2d;">
+        <span>🏭</span>
+        <div class="work-card-tag">Case Study</div>
+      </div>
+      <div class="work-card-body">
+        <div class="work-card-title">Bajaj Auto Reduces 65% Incidents Using InfiVR AI 3D Fire Safety Trainings</div>
+        <div class="work-card-meta">
+          <span>InfiVR Blog</span>
+          <span class="work-card-arrow">↗</span>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div style="margin-top: 2rem; text-align: center;">
+    <a href="https://www.linkedin.com/in/rimjhim-kamal-16637622a/" target="_blank" class="btn-outline">View LinkedIn Content →</a>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="education" id="education">
+  <div class="section-label">Academic Background</div>
+  <h2 class="section-title">Built on <em>rigorous foundations</em></h2>
+  <div class="section-divider"></div>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-year">2023 – 2025</div>
+      <div class="edu-degree">M.Sc. Biotechnology</div>
+      <div class="edu-uni">Panjab University, Chandigarh</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-year">2020 – 2023</div>
+      <div class="edu-degree">B.Sc. Zoology</div>
+      <div class="edu-uni">Delhi University, New Delhi</div>
+    </div>
+  </div>
+  <div style="margin-top: 2.5rem;">
+    <div class="section-label" style="margin-bottom: 1rem;">Achievements</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+      <div style="background: var(--white); border: 1px solid var(--cream-2); padding: 1rem 1.3rem; border-radius: 4px; flex: 1; min-width: 220px;" class="reveal">
+        <div style="font-size:1.4rem; margin-bottom:0.4rem;">🥉</div>
+        <div style="font-size:0.88rem; font-weight:500;">3rd Place — National Science Olympiad</div>
+      </div>
+      <div style="background: var(--white); border: 1px solid var(--cream-2); padding: 1rem 1.3rem; border-radius: 4px; flex: 1; min-width: 220px;" class="reveal">
+        <div style="font-size:1.4rem; margin-bottom:0.4rem;">🎤</div>
+        <div style="font-size:0.88rem; font-weight:500;">Debate Competition — Certified</div>
+      </div>
+      <div style="background: var(--white); border: 1px solid var(--cream-2); padding: 1rem 1.3rem; border-radius: 4px; flex: 1; min-width: 220px;" class="reveal">
+        <div style="font-size:1.4rem; margin-bottom:0.4rem;">🎓</div>
+        <div style="font-size:0.88rem; font-weight:500;">DBT Star College — Participant</div>
+      </div>
+      <div style="background: var(--white); border: 1px solid var(--cream-2); padding: 1rem 1.3rem; border-radius: 4px; flex: 1; min-width: 220px;" class="reveal">
+        <div style="font-size:1.4rem; margin-bottom:0.4rem;">🎯</div>
+        <div style="font-size:0.88rem; font-weight:500;">Event Head — Departmental Fest</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="section-label">Open to Work</div>
+  <h2 class="section-title" style="color: var(--white);">Let's build something<br><em style="color: var(--gold-light);">great together</em></h2>
+  <div style="width: 48px; height: 1px; background: var(--gold); margin: 1rem auto 1.5rem;"></div>
+  <p>Whether you're looking for a sharp digital marketer, a content creator with technical depth, or someone who thrives at the frontier of technology marketing — I'd love to have a conversation.</p>
+  <a href="https://calendly.com/rimjimkamal44/free-discovery-call" target="_blank" class="btn-cta">Schedule a Free Call</a>
+  <p class="cta-email">Or email me directly at <a href="mailto:rimjimkamal44@gmail.com">rimjimkamal44@gmail.com</a> · <a href="tel:+918899478231">+91 88994 78231</a></p>
+</section>
+
+<footer>
+  <span>© 2025 Rimjim Kamal · Bengaluru, India</span>
+  <div>
+    <a href="mailto:rimjimkamal44@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/rimjhim-kamal-16637622a/" target="_blank">LinkedIn</a>
+    <a href="https://blog.infivr.com" target="_blank">Blog</a>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
